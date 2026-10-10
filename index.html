@@ -1,0 +1,61 @@
+      <button id="sp4" data-s="4">4×</button>
+    </div>
+  </header>
+
+  <div id="ticker" aria-live="polite"></div>
+
+  <aside id="card" class="panel" hidden>
+    <button class="x" id="cardx" aria-label="Close">×</button>
+    <h2 id="cn"></h2>
+    <div class="sub" id="cs"></div>
+    <dl id="cd"></dl>
+    <button class="btn primary" id="cgo" hidden>Start a line here</button>
+  </aside>
+
+  <div id="plan" class="panel" hidden>
+    <div class="info"><div class="t" id="pt"></div><div class="d" id="pd"></div></div>
+    <div class="acts">
+      <button class="btn primary" id="pgo">Build</button>
+      <button class="btn" id="pclear">New start</button>
+    </div>
+  </div>
+
+  <nav class="dock panel" aria-label="Tools">
+    <button id="mSurvey" class="on">Survey</button>
+    <button id="mWire">Lay wire</button>
+    <button id="mHome">Home office</button>
+    <button id="mHelp">Map</button>
+  </nav>
+
+  <div id="toast" role="status"></div>
+
+  <div id="intro">
+    <div class="sheet panel">
+      <div class="kicker">Western Pennsylvania · 1850</div>
+      <h1>Telegraph Frontier</h1>
+      <p>The railroad is coming and every town on the map wants the news. Run wire from your home office, open an office in each village, and watch the settlements grow once the line reaches them.</p>
+      <ul>
+        <li><b>Survey</b><span>Tap a village to see its size, trade and traffic.</span></li>
+        <li><b>Lay wire</b><span>Tap where the line starts, then where it ends. The route is planned for you. Keep tapping to carry the run on from where it stopped. Esc or right-click to start somewhere new.</span></li>
+        <li><b>Offices</b><span>A village gets its office once its wire is joined to your home office. Wire that is not joined yet earns nothing.</span></li>
+        <li><b>Terrain</b><span>Poles are cheap along the railroad, dearer through forest and hills, dearest across rivers.</span></li>
+        <li><b>Money</b><span>Funds buy poles. Every village on the line adds income, and it grows as the village grows.</span></li>
+        <li><b>Move</b><span>Drag to pan, wheel or pinch to zoom. Space pauses, 1 to 3 set speed.</span></li>
+      </ul>
+      <div class="row">
+        <div><label for="seed">Map seed</label><br><input id="seed" type="text" maxlength="12" autocomplete="off" spellcheck="false"></div>
+        <button class="btn" id="newmap">New map</button>
+        <button class="btn go" id="begin">Begin</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/util.js"></script>
+<script src="js/world.js"></script>
+<script src="js/terrain.js"></script>
+<script src="js/scene.js"></script>
+<script src="js/sim.js"></script>
+<script src="js/ui.js"></script>
+
+</body></html>
