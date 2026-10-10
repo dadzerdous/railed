@@ -1,3 +1,22 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"></head><body>
+<title>Telegraph Frontier</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Barlow+Semi+Condensed:wght@400;500;600&family=Special+Elite&display=swap">
+
+<div id="app">
+  <canvas id="c" aria-label="Isometric map of western Pennsylvania in the 1850s"></canvas>
+
+  <header id="hud">
+    <div class="date" id="date">January 1850<small>Telegraph era</small></div>
+    <div class="stat"><b id="funds">$500</b><span>Funds</span></div>
+    <div class="stat"><b id="net">+$0</b><span>Income a month</span></div>
+    <div class="stat"><b id="conn">1 / 10</b><span>On the line</span></div>
+    <div class="speed" role="group" aria-label="Game speed">
+      <button id="sp0" data-s="0" aria-label="Pause">II</button>
+      <button id="sp1" data-s="1">1×</button>
+      <button id="sp2" data-s="2">2×</button>
       <button id="sp4" data-s="4">4×</button>
     </div>
   </header>
@@ -51,11 +70,11 @@
   </div>
 </div>
 
-<script src="js/util.js"></script>
-<script src="js/world.js"></script>
-<script src="js/terrain.js"></script>
-<script src="js/scene.js"></script>
-<script src="js/sim.js"></script>
-<script src="js/ui.js"></script>
+<script src="util.js"></script>
+<script src="world.js"></script>
+<script src="terrain.js"></script>
+<script src="scene.js"></script>
+<script src="sim.js"></script>
+<script src="ui.js"></script>
 
 </body></html>
