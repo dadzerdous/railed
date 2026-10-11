@@ -1,80 +1,10 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"></head><body>
-<title>Telegraph Frontier</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Barlow+Semi+Condensed:wght@400;500;600&family=Special+Elite&display=swap">
-
-<div id="app">
-  <canvas id="c" aria-label="Isometric map of western Pennsylvania in the 1850s"></canvas>
-
-  <header id="hud">
-    <div class="date" id="date">January 1850<small>Telegraph era</small></div>
-    <div class="stat"><b id="funds">$500</b><span>Funds</span></div>
-    <div class="stat"><b id="net">+$0</b><span>Income a month</span></div>
-    <div class="stat"><b id="conn">1 / 10</b><span>On the line</span></div>
-    <div class="speed" role="group" aria-label="Game speed">
-      <button id="sp0" data-s="0" aria-label="Pause">II</button>
-      <button id="sp1" data-s="1">1×</button>
-      <button id="sp2" data-s="2">2×</button>
-      <button id="sp4" data-s="4">4×</button>
-    </div>
-  </header>
-
-  <div id="ticker" aria-live="polite"></div>
-
-  <aside id="card" class="panel" hidden>
-    <button class="x" id="cardx" aria-label="Close">×</button>
-    <h2 id="cn"></h2>
-    <div class="sub" id="cs"></div>
-    <dl id="cd"></dl>
-    <button class="btn primary" id="cgo" hidden>Start a line here</button>
-  </aside>
-
-  <div id="plan" class="panel" hidden>
-    <div class="info"><div class="t" id="pt"></div><div class="d" id="pd"></div></div>
-    <div class="acts">
-      <button class="btn primary" id="pgo">Build</button>
-      <button class="btn" id="pclear">New start</button>
-    </div>
-  </div>
-
-  <nav class="dock panel" aria-label="Tools">
-    <button id="mSurvey" class="on">Survey</button>
-    <button id="mWire">Lay wire</button>
-    <button id="mHome">Home office</button>
-    <button id="mHelp">Map</button>
-  </nav>
-
-  <div id="toast" role="status"></div>
-
-  <div id="intro">
-    <div class="sheet panel">
-      <div class="kicker">Western Pennsylvania · 1850</div>
-      <h1>Telegraph Frontier</h1>
-      <p>The railroad is coming and every town on the map wants the news. Run wire from your home office, open an office in each village, and watch the settlements grow once the line reaches them.</p>
-      <ul>
-        <li><b>Survey</b><span>Tap a village to see its size, trade and traffic.</span></li>
-        <li><b>Lay wire</b><span>Tap where the line starts, then where it ends. The route is planned for you. Keep tapping to carry the run on from where it stopped. Esc or right-click to start somewhere new.</span></li>
-        <li><b>Offices</b><span>A village gets its office once its wire is joined to your home office. Wire that is not joined yet earns nothing.</span></li>
-        <li><b>Terrain</b><span>Poles are cheap along the railroad, dearer through forest and hills, dearest across rivers.</span></li>
-        <li><b>Money</b><span>Funds buy poles. Every village on the line adds income, and it grows as the village grows.</span></li>
-        <li><b>Move</b><span>Drag to pan, wheel or pinch to zoom. Space pauses, 1 to 3 set speed.</span></li>
-      </ul>
-      <div class="row">
-        <div><label for="seed">Map seed</label><br><input id="seed" type="text" maxlength="12" autocomplete="off" spellcheck="false"></div>
-        <button class="btn" id="newmap">New map</button>
-        <button class="btn go" id="begin">Begin</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script src="util.js"></script>
-<script src="world.js"></script>
-<script src="terrain.js"></script>
-<script src="scene.js"></script>
-<script src="sim.js"></script>
-<script src="ui.js"></script>
-
-</body></html>
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Runes of Midgard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Barlow+Semi+Condensed:wght@400;500;600&display=swap"></head><body>
+<div id="app"><canvas id="c" aria-label="Isometric map of Midgard"></canvas>
+<header id="hud"><div class="date" id="date">Spring 850<small>Age of Runes</small></div><div class="stat"><b id="silver">90</b><span>Silver</span></div><div class="stat"><b id="timber">70</b><span>Timber</span></div><div class="stat"><b id="rune">8</b><span>Rune Power</span></div><div class="stat"><b id="conn">1 / 10</b><span>Settlements</span></div><div class="speed" role="group"><button data-s="0">II</button><button data-s="1">1×</button><button data-s="2">2×</button><button data-s="4">4×</button></div></header>
+<div id="ticker" aria-live="polite"></div>
+<aside id="card" class="panel" hidden><button class="x" id="cardx">×</button><h2 id="cn"></h2><div class="sub" id="cs"></div><dl id="cd"></dl><button class="btn primary" id="cgo">Begin rune path here</button></aside>
+<div id="plan" class="panel" hidden><div class="info"><div class="t" id="pt"></div><div class="d" id="pd"></div></div><div class="acts"><button class="btn primary" id="pgo">Bind Path</button><button class="btn" id="pundo">Undo</button><button class="btn" id="pclear">Cancel</button></div></div>
+<nav class="dock panel"><button id="mSurvey" class="on">Survey</button><button id="mWire">Carve Runes</button><button id="mHome">Rune Tower</button><button id="mHelp">Saga</button></nav><div id="toast" role="status"></div>
+<div id="intro"><div class="sheet panel"><div class="kicker">Midgard · Age of Runes</div><h1>Runes of Midgard</h1><p>The old paths have gone dark. From your Rune Tower, carve a new network across Midgard. Every square matters: terrain consumes resources, ancient sites strengthen your network, and settlements offer different rewards.</p><ul><li><b>Survey</b><span>Inspect settlements and resource sites before choosing where to expand.</span></li><li><b>Carve Runes</b><span>Start on your connected network, then place the route yourself one square at a time. No automatic pathfinding.</span></li><li><b>Resources</b><span>Silver pays workers. Timber builds runestones. Rune Power bends difficult terrain and crosses rivers.</span></li><li><b>Sites</b><span>Run a connected path through Groves, Silver Veins and Rune Springs to gain passive resources.</span></li><li><b>Settlements</b><span>Different settlements produce different resources once joined to your rune network.</span></li><li><b>Goal</b><span>For now: grow a strong network. The Bifröst comes after we prove this loop is fun.</span></li></ul><div class="row"><div><label for="seed">World seed</label><br><input id="seed" maxlength="12"></div><button class="btn" id="newmap">New Midgard</button><button class="btn go" id="begin">Begin</button></div></div></div>
+</div><script src="util.js"></script><script src="world.js"></script><script src="terrain.js"></script><script src="scene.js"></script><script src="sim.js"></script><script src="ui.js"></script></body></html>

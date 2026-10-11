@@ -27,19 +27,16 @@
   }
 
   function pole(ctx, cx, cy) {
-    ctx.strokeStyle = 'rgb(70,50,34)'; ctx.lineWidth = 2;
-    ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx, cy - 14); ctx.stroke();
-    ctx.lineWidth = 1.3;
-    ctx.beginPath(); ctx.moveTo(cx - 4, cy - 13); ctx.lineTo(cx + 4, cy - 13); ctx.stroke();
-    ctx.fillStyle = 'rgb(220,230,236)';
-    ctx.fillRect(cx - 4.5, cy - 14.5, 1.6, 1.6); ctx.fillRect(cx + 2.9, cy - 14.5, 1.6, 1.6);
+    ctx.fillStyle='rgb(55,50,68)'; ctx.strokeStyle='rgb(148,112,205)'; ctx.lineWidth=1.4;
+    ctx.beginPath(); ctx.moveTo(cx-4,cy); ctx.lineTo(cx-2,cy-18); ctx.lineTo(cx+3,cy-20); ctx.lineTo(cx+5,cy); ctx.closePath(); ctx.fill(); ctx.stroke();
+    ctx.strokeStyle='rgb(201,168,255)'; ctx.lineWidth=1.2; ctx.beginPath(); ctx.moveTo(cx,cy-16); ctx.lineTo(cx+2,cy-11); ctx.lineTo(cx-1,cy-7); ctx.stroke();
   }
 
   function wire(ctx, x1, y1, x2, y2) {
     const mx = (x1 + x2) / 2, my = (y1 + y2) / 2 + 2.6;
     ctx.beginPath(); ctx.moveTo(x1, y1 - 13); ctx.quadraticCurveTo(mx, my - 13, x2, y2 - 13);
-    ctx.strokeStyle = 'rgba(245,238,220,0.35)'; ctx.lineWidth = 2.4; ctx.stroke();
-    ctx.strokeStyle = 'rgba(32,26,20,0.95)'; ctx.lineWidth = 1.1; ctx.stroke();
+    ctx.strokeStyle = 'rgba(168,112,255,0.22)'; ctx.lineWidth = 5; ctx.stroke();
+    ctx.strokeStyle = 'rgba(205,176,255,0.9)'; ctx.lineWidth = 1.5; ctx.stroke();
   }
 
   function office(ctx, cx, cy, big, t) {
@@ -66,11 +63,12 @@
   }
 
   TF.stageOf = function (pop) { return pop < 30 ? 0 : pop < 90 ? 1 : pop < 240 ? 2 : 3; };
-  TF.STAGES = ['Hamlet', 'Village', 'Town', 'City'];
+  TF.STAGES = ['Hamlet', 'Village', 'Town', 'Hold'];
 
   TF.rebuildItems = function (st) {
     const w = st.world, items = [];
     for (let i = 0; i < st.net.length; i++) if (st.net[i]) items.push({ k: 1, x: i % w.W, y: Math.floor(i / w.W) });
+    for (const n of (st.nodes || [])) items.push({ k: 3, n, x:n.x, y:n.y });
     for (const s of st.vs) {
       for (let li = 0; li < s.shown; li++) items.push({ k: 0, s, li, x: s.v.lots[li].x, y: s.v.lots[li].y });
       items.push({ k: 2, s, x: s.v.x, y: s.v.y });
@@ -107,6 +105,14 @@
           const [ox, oy] = TF.proj(nx, ny, w.h[ny * W + nx]);
           wire(ctx, cx, cy, ox, oy);
         }
+      } else if (it.k === 3) {
+        const n=it.n, def=TF.NODE[n.kind];
+        const glow=n.connected?0.9:0.45;
+        ctx.save(); ctx.translate(cx,cy-7);
+        ctx.fillStyle=n.kind==='timber'?'rgba(70,130,80,'+glow+')':n.kind==='silver'?'rgba(190,200,210,'+glow+')':'rgba(150,90,230,'+glow+')';
+        ctx.strokeStyle=n.connected?'rgb(226,205,255)':'rgba(235,230,220,.7)'; ctx.lineWidth=n.connected?2:1;
+        ctx.beginPath(); ctx.arc(0,0,n.kind==='rune'?7:6,0,6.2832); ctx.fill(); ctx.stroke();
+        ctx.fillStyle='rgb(30,25,35)'; ctx.font='700 9px sans-serif'; ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillText(def.icon,0,.5); ctx.restore();
       } else {
         const s = it.s;
         if (s.conn) office(ctx, cx, cy, s.v.isHQ || s.stage >= 2, now); else stake(ctx, cx, cy, now);
@@ -151,16 +157,16 @@
       }
       const p = st.plan;
       if (p && p.path) {
-        const ok = p.valid && st.funds >= p.cost;
+        const ok = p.valid && TF.canAfford(st,p);
         ctx.save(); ctx.lineJoin = 'round'; ctx.lineCap = 'round';
         ctx.beginPath();
         p.path.forEach(([x, y], k) => { const [cx, cy] = TF.proj(x, y, w.h[y * W + x]); if (k) ctx.lineTo(cx, cy - 2); else ctx.moveTo(cx, cy - 2); });
         ctx.strokeStyle = 'rgba(20,16,12,0.55)'; ctx.lineWidth = 7; ctx.stroke();
         ctx.setLineDash([9, 6]); ctx.lineDashOffset = -now * 18;
-        ctx.strokeStyle = ok ? 'rgb(246,206,120)' : 'rgb(222,110,76)'; ctx.lineWidth = 3.4; ctx.stroke();
+        ctx.strokeStyle = ok ? 'rgb(190,135,255)' : 'rgb(222,110,76)'; ctx.lineWidth = 3.4; ctx.stroke();
         ctx.restore();
         const e = p.path[p.path.length - 1], [ex, ey] = TF.proj(e[0], e[1], w.h[e[1] * W + e[0]]);
-        ctx.fillStyle = ok ? 'rgb(246,206,120)' : 'rgb(222,110,76)';
+        ctx.fillStyle = ok ? 'rgb(210,175,255)' : 'rgb(222,110,76)';
         ctx.beginPath(); ctx.arc(ex, ey - 2, 5, 0, 6.2832); ctx.fill();
       }
     }

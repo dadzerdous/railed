@@ -90,3 +90,7 @@
     #intro h1 { font-size: 28px; }
   }
   @media (prefers-reduced-motion: reduce) { #toast, #ticker { transition: none; } }
+/* v0.2 Norse/rune theme */
+:root{--field:#0d0b12;--ink:#17131e;--ink-2:#241d2e;--line:#493b5d;--paper:#eee8dc;--paper-dim:#b8adbf;--brass:#9d6bd6;--brass-hi:#d2aaff;--verdigris:#7bc7a4;--rust:#d66f62;--display:"Cinzel",Georgia,serif;--tape:"Barlow Semi Condensed",system-ui,sans-serif}
+.panel{background:rgba(20,15,28,.92);border-color:#4a3b60;box-shadow:0 0 24px rgba(111,63,168,.12)}
+#hud{background:linear-gradient(rgba(13,10,18,.96),rgba(13,10,18,.65) 80%,rgba(13,10,18,0))}
